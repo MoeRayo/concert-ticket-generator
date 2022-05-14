@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/cloudinary": "^1.0.3",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "tachyons": "^4.12.0"
