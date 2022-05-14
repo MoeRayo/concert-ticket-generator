@@ -12,6 +12,11 @@
       <cld-transformation flags="layer_apply" gravity="south_east" x="150" y="80" />
       
     </cld-image>
+    <div class="mv4">
+      <label class="db mb2 f3 fw4 b">Shareable link</label>
+      <input disabled type="text" class="db w-90 pv3 ph2 br2 ba b--black-40 f7" :value="url" />
+      <button class="f6 link dim br2 ph3 pv2 db white bg-dark-green ba b--green mt2" @click="copyUrl">{{share}}</button>
+    </div>
     
   </div>
 </template>
@@ -30,6 +35,25 @@ export default {
       type: String, 
       required: true
     },
+  },
+  data() {
+    return {
+      url: "",
+      share: 'Share Link'
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.url = this.$refs.ref.$el.src
+    });
+  },
+  methods: {
+    copyUrl(){
+      navigator.clipboard
+      .writeText(this.url)
+      .then(() => (this.share = 'Copied!'))
+      .catch((err) => err)
+    }
   },
 }
 </script>
